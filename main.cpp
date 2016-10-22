@@ -116,15 +116,41 @@ asker* Ekle(asker* ilkEleman, int eklenecekDeger)
 }
 // --- dairesel bağlı liste --- //
 
-int main()
-{
-    int askerSayisi = 0, adimSayisi = 0;
 
+// --- girdiler --- //
+int askerSayisi = 0, adimSayisi = 0;
+
+void askerSayisiniAl()
+{
     cout << "Asker sayisini girin: ";
     cin >> askerSayisi;
 
+    // girdi doğruluğu testi
+    if (askerSayisi <= 0)
+    {
+        cout << "\n\nHATA: Asker sayisi 0'dan buyuk olmalidir. Lutfen tekrar giris yapiniz.\n\n" << endl;
+        askerSayisiniAl();
+    }
+}
+
+void adimSayisiniAl()
+{
     cout << "Adim sayisini girin: ";
     cin >> adimSayisi;
+
+    // girdi doğruluğu testi
+    if (adimSayisi <= 1)
+    {
+        cout << "\n\nHATA: Adim sayisi 1'den buyuk olmalidir. Lutfen tekrar giris yapiniz.\n\n" << endl;
+        adimSayisiniAl();
+    }
+}
+
+int main()
+{
+    // girdilerimizi alıyoruz.
+    askerSayisiniAl();
+    adimSayisiniAl();
 
     cout << endl;
     cout << "Girilen asker sayisi: " << askerSayisi << endl;
@@ -145,7 +171,7 @@ int main()
     int adim = 1;
     asker* s = ilk; // sayacımız
 
-    while(askerSayisi >= adimSayisi)
+    while (askerSayisi >= adimSayisi)
     {
         if (adim % adimSayisi == 0)     // adım sayımızın tam katı olan bir adımdaysak
         {                               // askerimizi bulduk demektir.
