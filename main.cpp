@@ -1,6 +1,8 @@
 #include <iostream>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 // --- dairesel bağlı liste --- //
 struct v
@@ -156,6 +158,10 @@ int main()
     cout << "Girilen asker sayisi: " << askerSayisi << endl;
     cout << "Girilen adim sayisi: " << adimSayisi << endl;
 
+    // anlık zamanı alıyoruz.
+    high_resolution_clock::time_point z1 = high_resolution_clock::now();
+
+
     // bağlı listemizi oluşturuyoruz
     asker* ilk = NULL;
 
@@ -191,6 +197,16 @@ int main()
 
     cout << "Sag kalan askerler; " << endl;
     Listele(ilk);
+
+    cout << endl;
+
+    // anlık zamanı alıyoruz.
+    high_resolution_clock::time_point z2 = high_resolution_clock::now();
+
+    // son aldığımız zamandan ilk aldığımız zamanı çıkartıp mikrosaniye cinsine çeviriyoruz.
+    auto sure = duration_cast<microseconds>(z2 - z1).count();
+
+    cout <<"Problem " << sure << " mikrosaniyede cozuldu!" << endl;
 
     cout << endl;
     return 0;
