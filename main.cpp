@@ -20,7 +20,7 @@ void Listele(asker* ilkEleman)
 
     do
     {
-        cout << i << ". asker: " << s -> sayi << endl;
+        cout << "   " << i << ". asker: " << s -> sayi << endl;
         i++;
         s = s -> sonraki;
     } while(s != ilkEleman);
@@ -124,7 +124,7 @@ int askerSayisi = 0, adimSayisi = 0;
 
 void askerSayisiniAl()
 {
-    cout << "Asker sayisini girin: ";
+    cout << " Asker sayisini girin: ";
     cin >> askerSayisi;
 
     // girdi doğruluğu testi
@@ -137,7 +137,7 @@ void askerSayisiniAl()
 
 void adimSayisiniAl()
 {
-    cout << "Adim sayisini girin: ";
+    cout << " Adim sayisini girin: ";
     cin >> adimSayisi;
 
     // girdi doğruluğu testi
@@ -150,13 +150,14 @@ void adimSayisiniAl()
 
 int main()
 {
+    cout << endl;
     // girdilerimizi alıyoruz.
     askerSayisiniAl();
     adimSayisiniAl();
 
     cout << endl;
-    cout << "Girilen asker sayisi: " << askerSayisi << endl;
-    cout << "Girilen adim sayisi: " << adimSayisi << endl;
+    cout << " Girilen asker sayisi: " << askerSayisi << endl;
+    cout << " Girilen adim sayisi: " << adimSayisi << endl;
 
     // anlık zamanı alıyoruz.
     high_resolution_clock::time_point z1 = high_resolution_clock::now();
@@ -195,7 +196,7 @@ int main()
     }
 
 
-    cout << "Sag kalan askerler; " << endl;
+    cout << " Sag kalan askerler; " << endl;
     Listele(ilk);
 
     cout << endl;
@@ -206,7 +207,7 @@ int main()
     // son aldığımız zamandan ilk aldığımız zamanı çıkartıp mikrosaniye cinsine çeviriyoruz.
     auto sure = duration_cast<microseconds>(z2 - z1).count();
 
-    cout <<"Problem " << sure << " mikrosaniyede cozuldu!" << endl;
+    cout <<" Problem " << sure << " mikrosaniyede cozuldu!" << endl;
 
     cout << endl;
     return 0;
