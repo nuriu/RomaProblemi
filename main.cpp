@@ -1,5 +1,6 @@
 #include <iostream>
 #include <chrono>
+#include <string>
 
 using namespace std;
 using namespace std::chrono;
@@ -125,10 +126,16 @@ int askerSayisi = 0, adimSayisi = 0;
 void askerSayisiniAl()
 {
     cout << " Asker sayisini girin: ";
-    cin >> askerSayisi;
+    cin >> noskipws >> askerSayisi;
 
-    // girdi doğruluğu testi
-    if (askerSayisi <= 0)
+    if (!cin || !askerSayisi)
+    {
+        cout << "\n\nHATA: Asker sayisi numara olmalidir. Lutfen tekrar giris yapiniz.\n\n" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        askerSayisiniAl();
+    }
+    else if (askerSayisi <= 0)
     {
         cout << "\n\nHATA: Asker sayisi 0'dan buyuk olmalidir. Lutfen tekrar giris yapiniz.\n\n" << endl;
         askerSayisiniAl();
@@ -138,10 +145,17 @@ void askerSayisiniAl()
 void adimSayisiniAl()
 {
     cout << " Adim sayisini girin: ";
-    cin >> adimSayisi;
+    cin >> noskipws >> adimSayisi;
 
     // girdi doğruluğu testi
-    if (adimSayisi <= 1)
+    if (!cin)
+    {
+        cout << "\n\nHATA: Adim sayisi numara olmalidir. Lutfen tekrar giris yapiniz.\n\n" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        adimSayisiniAl();
+    }
+    else if (adimSayisi <= 1)
     {
         cout << "\n\nHATA: Adim sayisi 1'den buyuk olmalidir. Lutfen tekrar giris yapiniz.\n\n" << endl;
         adimSayisiniAl();
